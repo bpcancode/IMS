@@ -1,0 +1,92 @@
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+        <div>
+            <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> New Sales</h3>
+            <p class="card-text">Select an item and quantity to sell.</p>
+
+            <form class="form" [formGroup]="salesForm" (ngSubmit)="sellProduct()" #saleForm="ngForm">
+                <div class="mb-3">
+                    <label for="product" class="form-label">Product</label>
+                    <select class="form-select" id="product" name="product" formControlName="productId"
+                        (change)="selectProduct($event)" required>
+                        <option value="" disabled selected>Select a product</option>
+                        @for (product of products(); track $index) {
+                        <option value="{{product.id}}">{{product.name}} ({{product.stock}} in stock) - {{product.price |
+                            currency}}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" inputmode="numeric" class="form-control" id="quantity" name="quantity" min="1"
+                        formControlName="quantity" required>
+                </div>
+
+                @if(selectedProduct()) {
+                <button type="button" (click)="sellProduct()" [disabled]="salesForm.invalid" class="btn btn-primary">
+                    Complete Sale</button>
+                }
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-3" style="width: 100%;">
+    <h2 class="px-3 mt-3">Sales</h2>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of sales() ; track $index) {
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{getProductName(item.itemId) }}</td>
+                    <td>{{item.totalPrice }}</td>
+                    <td>{{item.quantity }}</td>
+                </tr>
+                }
+
+                @if (sales().length === 0) {
+                <tr>
+                    <td colspan="4" class="text-center">No sales records found.</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card mt-3" style="width: 100%;">
+    <div class="card-body">
+        <div>
+            <h3 class="card-title"><i class="fas fa-box"></i> Restock Product</h3>
+            <p class="card-text">Select an item and quantity to restock.</p>
+            <form class="form" [formGroup]="restockForm" (ngSubmit)="restockProduct()" #restockFormRef="ngForm">
+                <div class="mb-3">
+                    <label for="restock-product" class="form-label">Product</label>
+                    <select class="form-select" id="restock-product" name="restock-product" formControlName="productId" required>
+                        <option value="" disabled selected>Select a product</option>
+                        @for (product of products(); track $index) {
+                            <option value="{{product.id}}">{{product.name}} ({{product.stock}} in stock)</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="restock-quantity" class="form-label">Quantity</label>
+                    <input type="number" inputmode="numeric" class="form-control" id="restock-quantity" name="restock-quantity" min="1" formControlName="quantity" required>
+                </div>
+                <button type="submit" [disabled]="restockForm.invalid" class="btn btn-success">
+                    Restock Product
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

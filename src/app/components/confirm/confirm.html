@@ -1,0 +1,12 @@
+@if(show()) {
+    <div class="confirm-overlay">
+      <div class="confirm-dialog">
+        <div class="confirm-message">{{ options()?.message }}</div>
+        <div class="confirm-actions">
+          <button class="confirm-btn confirm" (click)="confirm()">{{ options()?.confirmText || 'Confirm' }}</button>
+          <button class="confirm-btn cancel" (click)="cancel()">{{ options()?.cancelText || 'Cancel' }}</button>
+        </div>
+      </div>
+    </div>
+}
+

@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Role Management</h3>
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addRoleModal"> <i class="fas fa-plus"></i> Add Role</button>
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (user of roles(); track $index; let i = $index) {
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.description}}</td>
+            <td>
+                <button class="btn btn-secondary me-2" (click)="editRoleClicked(user)" data-bs-toggle="modal" data-bs-target="#editRoleModal"> <i class="fas fa-edit"></i>
+                    Edit</button>
+                <button class="btn btn-danger me-2" (click)="deleteRole(user.id)"> <i class="fas fa-trash"></i>
+                    Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+  </table>
+
+<div class="modal fade" id="addRoleModal" tabindex="-1" aria-labelledby="addRoleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addRoleModalLabel">Add Role</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addRoleForm" (ngSubmit)="addRole()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter role name">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea  class="form-control" id="description" formControlName="description" placeholder="Enter description"> </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="addRoleForm.invalid" data-bs-dismiss="modal">Add Role</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editRoleModal" tabindex="-1" aria-labelledby="editRoleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editRoleModalLabel">Edit Role</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editRoleForm" (ngSubmit)="updateRole()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter role name">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea  class="form-control" id="description" formControlName="description" placeholder="Enter description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="editRoleForm.invalid" data-bs-dismiss="modal">Edit Role</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

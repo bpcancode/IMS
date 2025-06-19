@@ -1,0 +1,48 @@
+<div
+  class="sidenav"
+  [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''"
+>
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <i class="fal fa-bars"></i>
+    </button>
+    @if (!isLeftSidebarCollapsed()) {
+      <div class="logo-text">Menu</div>
+      <button class="btn-close" (click)="closeSidenav()">
+        <i class="fal fa-times close-icon"></i>
+      </button>
+    }
+  </div>
+  <div class="sidenav-nav">
+    @for (item of menus(); track $index) {
+      <li class="sidenav-nav-item">
+        <a
+          class="sidenav-nav-link"
+          [routerLink]="item.routeLink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="sidenav-link-icon" [class]="item.icon"></i>
+          @if (!isLeftSidebarCollapsed()) {
+            <span class="sidenav-link-text">{{ item.label }}</span>
+          }
+        </a>
+      </li>
+    }
+  </div>
+  <div class="sidenav-footer" [ngClass]="{ 'sidenav-collapsed': isLeftSidebarCollapsed() }">
+    <div class="user-info">
+      <div class="user-avatar">
+        <span>JD</span>
+      </div>
+      <div class="user-details">
+        <div class="username">{{username()}}</div>
+        <div class="role">{{role()}}</div>
+      </div>
+    </div>
+    <button class="logout-btn" (click)="logout()">
+      <i class="logout-icon fa fa-sign-out-alt"></i>
+      <span class="logout-text" *ngIf="!isLeftSidebarCollapsed()">Logout</span>
+    </button>
+  </div>
+</div>

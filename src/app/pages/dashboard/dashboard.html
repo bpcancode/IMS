@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> Today's Sales</h3>
+                <p class="card-text">{{todaySales() | currency}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <h3 class="card-title"><i class="fal fa-chart-line"></i> Total Sales</h3>
+                <p class="card-text">{{allTimeSales() | currency }} </p>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> Most popular Item </h3>
+                <p class="card-text">{{popularItem().name}} sold {{popularItem().sales}} times</p>
+            </div>
+        </div>
+    </div>
+    
+</div>

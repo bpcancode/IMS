@@ -1,0 +1,195 @@
+.sidenav {
+  background: #012a5b;
+  transition: all 0.5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 16.5625rem;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+}
+.sidenav-collapsed {
+  width: 5rem;
+}
+.sidenav .logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem 0.938rem 0 0.938rem;
+  width: 100%;
+}
+.sidenav .logo-container .logo {
+  background: #fff;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 0.313rem;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+.sidenav .logo-container .logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+.sidenav .logo-container .btn-close {
+  margin-left: auto;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+.sidenav .logo-container .btn-close .fa-times {
+  color: #fff;
+  font-size: 24px;
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.938rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 3.65rem);
+  cursor: pointer;
+}
+.sidenav-nav .sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: #f3f3f3;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+}
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-icon {
+  font-size: 22px;
+  width: 2rem;
+  min-width: 2rem;
+  text-align: center;
+  padding: 12px;
+}
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
+  margin-left: 1.5rem;
+}
+.sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
+  background-color: #fff;
+  color: #000;
+}
+
+.active {
+  background-color: #fff;
+}
+.active .sidenav-link-icon,
+.active .sidenav-link-text {
+  color: #000;
+}
+
+/* Footer for sidenav */
+.sidenav-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.938rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: #012050;
+  color: #fff;
+}
+
+.sidenav-footer .user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.sidenav-footer .user-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #012a5b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 0.75rem;
+}
+
+.sidenav-footer .user-details {
+  overflow: hidden;
+}
+
+.sidenav-footer .user-details .username {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidenav-footer .user-details .role {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.sidenav-footer .logout-btn {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.313rem;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.sidenav-footer .logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidenav-footer .logout-icon {
+  margin-right: 0.5rem;
+}
+
+/* Collapsed sidebar footer styles */
+.sidenav-collapsed .sidenav-footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-collapsed .sidenav-footer .user-details,
+.sidenav-collapsed .sidenav-footer .logout-btn .logout-text {
+  display: none;
+}
+
+.sidenav-collapsed .sidenav-footer .logout-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.sidenav-collapsed .sidenav-footer .logout-icon {
+  margin-right: 0;
+}
+
+.sidenav-collapsed .sidenav-footer .user-avatar {
+  margin-right: 0;
+  margin-bottom: 0.5rem;
+}
+

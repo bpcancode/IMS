@@ -1,0 +1,14 @@
+<app-sidebar [isLeftSidebarCollapsed]="isSidebarCollapsed()"
+  (changeIsLeftSidebarCollapsed)="changeisSidebarCollapsed($event)" 
+  [role]="role()"
+  [username]="username()"
+  [(authenticated)]="authenticated" />
+
+<div class="admin-header" [ngClass]="sizeClass()">
+  <app-header [username]="username()" [role]="role()"></app-header>
+</div>
+<div class="body" [ngClass]="sizeClass()">
+  <div class="body-container">
+    <router-outlet />
+  </div>
+</div>

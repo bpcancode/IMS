@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --custom-blue: #012a5b;
+    --custom-blue-dark: #001f3e;
+    --custom-blue-darker: #00152b;
+    --gray-100: #f0f2f5;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --gray-600: #4b5563;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    background: #f4f7fa;
+}
+
+.container {
+  z-index: 85;
+  /* Backdrop overrules: situation 1: container position: relative; && modal position: no position with modal inside container-div */
+  /* Backdrop overrules: situation 2: container position: absolute; && modal position: no position with modal inside container-div */
+  /* Less important ... */
+  /* Backdrop overrules: situation 3: container position: relative; && modal-div position: static with modal outside container-div */
+  /* Backdrop overrules: situation 4: container position: absolute; && modal-div position: static with modal outside container-div */
+  position: absolute;
+}
+
+.modal {
+  z-index: 999999;
+}
+
+.modal-backdrop {
+  z-index: 0;
+  display: none;
+}
+

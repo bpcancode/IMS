@@ -1,0 +1,107 @@
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.login-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 28rem;
+    width: 100%;
+    border: 1px solid var(--gray-200);
+}
+
+.login-card h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 0.25rem;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    margin-top: 0.25rem;
+    display: block;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: var(--custom-blue);
+    box-shadow: 0 0 0 3px rgba(1, 42, 91, 0.5);
+}
+
+.login-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.625rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--custom-blue);
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.login-button:hover {
+    background-color: var(--custom-blue-dark);
+    transform: scale(1.05);
+}
+
+.login-button:focus {
+    box-shadow: 0 0 0 4px rgba(1, 42, 91, 0.5), 0 0 0 2px white;
+}
+
+.signup-section {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.signup-section p {
+    color: var(--gray-600);
+}
+
+.signup-section a {
+    font-weight: 500;
+    color: var(--custom-blue);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.signup-section a:hover {
+    color: var(--custom-blue-darker);
+}

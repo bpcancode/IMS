@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Product Management</h3>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal"> <i class="fas fa-plus"></i> Add Product</button>
+</div>
+
+<div class="mb-3">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search products..." />
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Update At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (user of filteredProducts(); track $index; let i = $index) {
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.price}}</td>
+            <td>{{user.stock}}</td>
+            <td>{{user.updatedAt | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>
+                <button class="btn btn-secondary me-2" (click)="editProductClicked(user)" data-bs-toggle="modal" data-bs-target="#editProductModal"> <i class="fas fa-edit"></i>
+                    Edit</button>
+                <button class="btn btn-danger me-2" (click)="deleteProduct(user.id)"> <i class="fas fa-trash"></i>
+                    Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+  </table>
+
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProductModalLabel">Add Role</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addProuductForm" (ngSubmit)="addProduct()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter role name">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" inputmode="numeric" class="form-control" id="price" formControlName="price">
+            </div>
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" inputmode="numeric" class="form-control" id="stock" formControlName="stock">
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="addProuductForm.invalid" data-bs-dismiss="modal">Add Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Role</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editProductForm" (ngSubmit)="updateProduct()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter role name">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" inputmode="numeric" class="form-control" id="price" formControlName="price">
+            </div>
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" inputmode="numeric" class="form-control" id="stock" formControlName="stock">
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="editProductForm.invalid" data-bs-dismiss="modal">Edit Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
